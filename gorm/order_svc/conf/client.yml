@@ -19,6 +19,16 @@ getty:
     wait_timeout : "1s"
     max_msg_len : 4096
     session_name : "rpc_client"
+registry_config:
+  type: nacos
+  nacos:
+    application: seata-server
+    server_addr: 192.168.10.226:8848
+    namespace:
+    cluster: default
+    username: nacos
+    password: nacos 
+    
 tm:
   commit_retry_count: 5
   rollback_retry_count: 5

@@ -17,12 +17,14 @@ import (
 	"github.com/gotrx/starfish-samples/order_svc/dao"
 )
 
-const configPath = "/Users/caocx/Projects/Go/github.com/starfish-samples/gorm/order_svc/conf/client.yml"
+const configPath = "conf/client.yml"
 
 func main() {
 	r := gin.Default()
 	config.InitConf(configPath)
+	// 这个是连接配置中心
 	client.NewRpcClient()
+	// 这个需要上面初始化完毕
 	mysql.InitDataResourceManager()
 	mysql.RegisterResource(config.GetATConfig().DSN)
 
