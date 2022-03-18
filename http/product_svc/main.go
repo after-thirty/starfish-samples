@@ -14,7 +14,7 @@ import (
 	"github.com/gotrx/starfish-samples/product_svc/dao"
 )
 
-const configPath = "/Users/scottlewis/dksl/temp/starfish-samples/http/product_svc/conf/client.yml"
+const configPath = "conf/client.yml"
 
 func main() {
 	r := gin.Default()

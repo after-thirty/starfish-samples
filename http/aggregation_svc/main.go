@@ -9,7 +9,7 @@ import (
 	"github.com/gotrx/starfish-samples/aggregation_svc/svc"
 )
 
-var configPath = "/Users/scottlewis/dksl/temp/starfish-samples/http/aggregation_svc/conf/client.yml"
+var configPath = "conf/client.yml"
 
 func main() {
 	r := gin.Default()
