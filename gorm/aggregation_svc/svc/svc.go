@@ -124,7 +124,7 @@ func init() {
 	}
 }
 
-func (svc *ProxyService) GetProxyService() interface{} {
+func (svc *ProxyService) GetServiceProxy() interface{} {
 	return svc.Svc
 }
 

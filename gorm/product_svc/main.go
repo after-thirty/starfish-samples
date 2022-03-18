@@ -17,7 +17,7 @@ import (
 	"github.com/gotrx/starfish-samples/product_svc/dao"
 )
 
-const configPath = "/Users/caocx/Projects/Go/github.com/starfish-samples/gorm/product_svc/conf/client.yml"
+const configPath = "conf/client.yml"
 
 func main() {
 	r := gin.Default()
