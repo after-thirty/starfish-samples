@@ -22,7 +22,7 @@ getty:
 registry_config:
   type: nacos
   nacos:
-    application: seata-server
+    application: starfish-server
     server_addr: 192.168.10.226:8848
     namespace:
     cluster: default
