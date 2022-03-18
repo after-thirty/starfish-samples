@@ -1,11 +1,15 @@
 # Nacos 注册中心版本
+
 ## 一. 启动 MYSQL
+
 ```bash
 $ docker run -itd --name starfish-mysql -p 3306:3306 -e MYSQL_DATABASE=starfish -e MYSQL_ROOT_PASSWORD=123456 mysql --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 ```
 
 ## 二. 导入 MYSQL脚本
+
 通过数据库连接工具，如DBeaver 导入 starfish仓库
+
 ```sql
 -- starfish.branch_table definition
 
@@ -62,13 +66,31 @@ CREATE TABLE `lock_table` (
   KEY `idx_branch_id` (`branch_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 ```
+
 ## 启动Naocs
 
+注意所有配置文件修改为这个
+
+```yaml
+registry_config:
+  type: nacos
+  nacos:
+    application: starfish-server
+    server_addr: 192.168.10.226:8848
+    namespace:
+    cluster: default
+    username: nacos
+    password: nacos 
+```
+
 ## 编译启动 server
+
 ```bash
 $ ./tc start -config ../profiles/dev/config.yml   
 ```
+
 可以看到输出
+
 ```
 2022-03-17T10:30:12.426+0800    DEBUG   server/server.go:86     s bind addr{:8091} ok!
 2022-03-17T10:30:12.428+0800    INFO    file/registry.go:24     file register
