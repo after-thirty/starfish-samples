@@ -39,7 +39,7 @@ type TCCProxyServiceB struct {
 	Try func(ctx *context.BusinessActionContext) (bool, error) `TccActionName:"ServiceB"`
 }
 
-func (svc *TCCProxyServiceB) GetTccService() tcc.TccService {
+func (svc *TCCProxyServiceB) GetTccService() tcc.TCCService {
 	return svc.ServiceB
 }
 
