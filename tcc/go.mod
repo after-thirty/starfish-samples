@@ -8,6 +8,7 @@ require (
 	github.com/gotrx/starfish-samples/tcc v0.0.0-00010101000000-000000000000
 )
 
-replace github.com/gotrx/starfish => ../../starfish
-
-replace github.com/gotrx/starfish-samples/tcc => ../../starfish-samples/tcc
+replace (
+	github.com/gotrx/starfish => ../../starfish
+	github.com/gotrx/starfish-samples/tcc => ../../starfish-samples/tcc
+)

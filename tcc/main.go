@@ -17,9 +17,9 @@ func main() {
 	tcc.InitTCCResourceManager()
 
 	tm.Implement(service.ProxySvc)
-	tcc.ImplementTCC(service.TCCProxyServiceA)
-	tcc.ImplementTCC(service.TCCProxyServiceB)
-	tcc.ImplementTCC(service.TCCProxyServiceC)
+	tcc.ImplementTCC(service.TccProxyServiceA)
+	tcc.ImplementTCC(service.TccProxyServiceB)
+	tcc.ImplementTCC(service.TccProxyServiceC)
 
 	r.GET("/commit", func(c *gin.Context) {
 		service.ProxySvc.TCCCommitted(c)
