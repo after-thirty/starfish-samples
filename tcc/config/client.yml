@@ -1,4 +1,4 @@
-application_id: "order-svc"
+application_id: "tcc-svc"
 transaction_service_group: "127.0.0.1:8091"
 enable-client-batch-send-request: true
 starfish_version: "1.2.0"
@@ -19,6 +19,9 @@ getty:
     wait_timeout: "1s"
     max_msg_len: 4096
     session_name: "rpc_client"
+registry_config:
+  type: file
+
 tm:
   commit_retry_count: 5
   rollback_retry_count: 5
@@ -28,13 +31,3 @@ at:
   report_success_enable: false
   lock_retry_interval: 10ms
   lock_retry_times: 30
-
-registry_config:
-  type: nacos
-  nacos:
-    application: starfish-server
-    server_addr: 192.168.10.226:8848
-    namespace:
-    cluster: default
-    username: nacos
-    password: nacos 

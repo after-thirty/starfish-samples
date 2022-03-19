@@ -10,6 +10,6 @@ require (
 )
 
 replace (
-	github.com/gotrx/starfish v1.0.2-rc1 => /Users/scottlewis/dksl/git/1/starfish
-	github.com/gotrx/mysql v1.0.1 => /Users/scottlewis/dksl/current/mysql
+	github.com/gotrx/mysql => ../../mysql
+	github.com/gotrx/starfish => ../../starfish
 )

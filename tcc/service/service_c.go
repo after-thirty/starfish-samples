@@ -37,10 +37,10 @@ var serviceC = &ServiceC{}
 type TCCProxyServiceC struct {
 	*ServiceC
 
-	Try func(ctx *context.BusinessActionContext) (bool, error) `TccActionName:"ServiceC"`
+	Try func(ctx *context.BusinessActionContext) (bool, error) `TCCActionName:"ServiceC"`
 }
 
-func (svc *TCCProxyServiceC) GetTccService() tcc.TccService {
+func (svc *TCCProxyServiceC) GetTCCService() tcc.TCCService {
 	return svc.ServiceC
 }
 

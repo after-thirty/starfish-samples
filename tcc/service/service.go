@@ -78,7 +78,7 @@ type ProxyService struct {
 	TCCCanceled  func(ctx context.Context) error
 }
 
-func (svc *ProxyService) GetProxyService() interface{} {
+func (svc *ProxyService) GetServiceProxy() interface{} {
 	return svc.Service
 }
 
