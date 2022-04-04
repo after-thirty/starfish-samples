@@ -3,8 +3,8 @@ package service
 import (
 	"fmt"
 
-	"github.com/gotrx/starfish/pkg/client/context"
-	"github.com/gotrx/starfish/pkg/client/tcc"
+	"github.com/transaction-mesh/starfish/pkg/client/context"
+	"github.com/transaction-mesh/starfish/pkg/client/tcc"
 )
 
 type ServiceB struct {
