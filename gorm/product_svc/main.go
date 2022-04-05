@@ -4,17 +4,24 @@ import (
 	"context"
 	"net/http"
 	"time"
+)
 
+import (
 	"github.com/gin-gonic/gin"
-	"github.com/gotrx/mysql"
-	"github.com/gotrx/starfish/pkg/client"
-	"github.com/gotrx/starfish/pkg/client/config"
+
+	"github.com/transaction-mesh/mysql"
+
+	"github.com/transaction-mesh/starfish/pkg/client"
+	"github.com/transaction-mesh/starfish/pkg/client/config"
+
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 	"gorm.io/gorm/schema"
+)
 
-	dialector "github.com/gotrx/starfish-samples/dialector/mysql"
-	"github.com/gotrx/starfish-samples/product_svc/dao"
+import (
+	dialector "github.com/transaction-mesh/starfish-samples/dialector/mysql"
+	"github.com/transaction-mesh/starfish-samples/product_svc/dao"
 )
 
 const configPath = "conf/client.yml"

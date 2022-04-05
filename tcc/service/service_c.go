@@ -3,9 +3,11 @@ package service
 import (
 	"errors"
 	"fmt"
+)
 
-	"github.com/gotrx/starfish/pkg/client/context"
-	"github.com/gotrx/starfish/pkg/client/tcc"
+import (
+	"github.com/transaction-mesh/starfish/pkg/client/context"
+	"github.com/transaction-mesh/starfish/pkg/client/tcc"
 )
 
 type ServiceC struct {

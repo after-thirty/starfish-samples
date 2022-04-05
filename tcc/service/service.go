@@ -3,9 +3,11 @@ package service
 import (
 	"context"
 	"fmt"
+)
 
-	context2 "github.com/gotrx/starfish/pkg/client/context"
-	"github.com/gotrx/starfish/pkg/client/tm"
+import (
+	context2 "github.com/transaction-mesh/starfish/pkg/client/context"
+	"github.com/transaction-mesh/starfish/pkg/client/tm"
 )
 
 type Service struct {

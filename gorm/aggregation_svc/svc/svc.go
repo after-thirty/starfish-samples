@@ -7,12 +7,16 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+)
 
-	context2 "github.com/gotrx/starfish/pkg/client/context"
-	"github.com/gotrx/starfish/pkg/client/tm"
+import (
+	context2 "github.com/transaction-mesh/starfish/pkg/client/context"
+	"github.com/transaction-mesh/starfish/pkg/client/tm"
+)
 
-	"github.com/gotrx/starfish-samples/order_svc/dao"
-	dao2 "github.com/gotrx/starfish-samples/product_svc/dao"
+import (
+	"github.com/transaction-mesh/starfish-samples/order_svc/dao"
+	dao2 "github.com/transaction-mesh/starfish-samples/product_svc/dao"
 )
 
 type Svc struct {

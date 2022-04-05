@@ -5,13 +5,19 @@ import (
 	"database/sql"
 	"net/http"
 	"time"
+)
 
+import (
 	"github.com/gin-gonic/gin"
-	"github.com/gotrx/mysql"
-	"github.com/gotrx/starfish/pkg/client"
-	"github.com/gotrx/starfish/pkg/client/config"
 
-	"github.com/gotrx/starfish-samples/product_svc/dao"
+	"github.com/transaction-mesh/mysql"
+
+	"github.com/transaction-mesh/starfish/pkg/client"
+	"github.com/transaction-mesh/starfish/pkg/client/config"
+)
+
+import (
+	"github.com/transaction-mesh/starfish-samples/product_svc/dao"
 )
 
 const configPath = "conf/client.yml"
