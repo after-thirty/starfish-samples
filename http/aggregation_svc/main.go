@@ -2,10 +2,13 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+
 	"github.com/transaction-mesh/starfish/pkg/client"
 	"github.com/transaction-mesh/starfish/pkg/client/config"
 	"github.com/transaction-mesh/starfish/pkg/client/tm"
+)
 
+import (
 	"github.com/transaction-mesh/starfish-samples/aggregation_svc/svc"
 )
 

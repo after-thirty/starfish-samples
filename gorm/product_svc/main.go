@@ -4,15 +4,22 @@ import (
 	"context"
 	"net/http"
 	"time"
+)
 
+import (
 	"github.com/gin-gonic/gin"
+
 	"github.com/transaction-mesh/mysql"
+
 	"github.com/transaction-mesh/starfish/pkg/client"
 	"github.com/transaction-mesh/starfish/pkg/client/config"
+
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 	"gorm.io/gorm/schema"
+)
 
+import (
 	dialector "github.com/transaction-mesh/starfish-samples/dialector/mysql"
 	"github.com/transaction-mesh/starfish-samples/product_svc/dao"
 )

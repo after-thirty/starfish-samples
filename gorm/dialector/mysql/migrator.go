@@ -3,7 +3,9 @@ package mysql
 import (
 	"database/sql"
 	"fmt"
+)
 
+import (
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
 	"gorm.io/gorm/migrator"
