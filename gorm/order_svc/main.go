@@ -1,20 +1,44 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package main
 
 import (
 	"context"
 	"net/http"
 	"time"
+)
 
+import (
 	"github.com/gin-gonic/gin"
-	"github.com/gotrx/mysql"
-	"github.com/gotrx/starfish/pkg/client"
-	"github.com/gotrx/starfish/pkg/client/config"
+
+	"github.com/transaction-mesh/mysql"
+
+	"github.com/transaction-mesh/starfish/pkg/client"
+	"github.com/transaction-mesh/starfish/pkg/client/config"
+
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 	"gorm.io/gorm/schema"
+)
 
-	dialector "github.com/gotrx/starfish-samples/dialector/mysql"
-	"github.com/gotrx/starfish-samples/order_svc/dao"
+import (
+	dialector "github.com/transaction-mesh/starfish-samples/dialector/mysql"
+	"github.com/transaction-mesh/starfish-samples/order_svc/dao"
 )
 
 const configPath = "conf/client.yml"
