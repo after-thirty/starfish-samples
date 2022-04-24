@@ -23,18 +23,11 @@ tm:
   commit_retry_count: 5
   rollback_retry_count: 5
 at:
-  dsn: "root:123456@tcp(127.0.0.1:3306)/starfish_order?timeout=5s&readTimeout=5s&writeTimeout=1s&parseTime=true&loc=Local&charset=utf8mb4,utf8"
+  dsn: "root:123456@tcp(127.0.0.1:3306)/starfish_order?multiStatements=true&interpolateParams=true&timeout=5s&readTimeout=5s&writeTimeout=1s&parseTime=true&loc=Local&charset=utf8mb4,utf8"
   report_retry_count: 5
   report_success_enable: false
   lock_retry_interval: 10ms
   lock_retry_times: 30
 
 registry_config:
-  type: nacos
-  nacos:
-    application: starfish-server
-    server_addr: 192.168.10.226:8848
-    namespace:
-    cluster: default
-    username: nacos
-    password: nacos 
+  type: file

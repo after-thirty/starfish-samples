@@ -104,5 +104,65 @@ func main() {
 			})
 		}
 	})
+	r.POST("/deleteSo", func(c *gin.Context) {
+		type req struct {
+			Req []*dao.SoMaster
+		}
+		var q req
+		if err := c.ShouldBindJSON(&q); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+
+		_, err := d.DeleteSO(
+			context.WithValue(
+				context.Background(),
+				mysql.XID,
+				c.Request.Header.Get("XID")),
+			q.Req)
+
+		if err != nil {
+			c.JSON(400, gin.H{
+				"success": false,
+				"message": "fail",
+			})
+		} else {
+			c.JSON(200, gin.H{
+				"success": true,
+				"message": "success",
+			})
+		}
+	})
+
+	r.POST("/deleteBatchSO", func(c *gin.Context) {
+		type req struct {
+			Req []*dao.SoMaster
+		}
+		var q req
+		if err := c.ShouldBindJSON(&q); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+
+		_, err := d.DeleteBatchSO(
+			context.WithValue(
+				context.Background(),
+				mysql.XID,
+				c.Request.Header.Get("XID")),
+			q.Req)
+
+		if err != nil {
+			c.JSON(400, gin.H{
+				"success": false,
+				"message": "fail",
+			})
+		} else {
+			c.JSON(200, gin.H{
+				"success": true,
+				"message": "success",
+			})
+		}
+	})
+
 	r.Run(":8002")
 }

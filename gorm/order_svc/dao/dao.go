@@ -138,6 +138,70 @@ func (dao *Dao) CreateSO(ctx context.Context, soMasters []*SoMaster) ([]uint64, 
 	return result, nil
 }
 
+func (dao *Dao) DeleteSO(ctx context.Context, soMasters []*SoMaster) ([]uint64, error) {
+	result := make([]uint64, 0, len(soMasters))
+	tx := dao.DB.WithContext(ctx).Begin(&sql.TxOptions{
+		Isolation: sql.LevelDefault,
+		ReadOnly:  false,
+	})
+
+	for _, soMaster := range soMasters {
+		soid := NextID()
+		so_master := &SoMaster{}
+
+		values := make([]interface{}, 2)
+		values[0] = soid
+		values[1] = soid
+		where := clause.IN{Column: "so_id", Values: values}
+		if err := tx.Omit(clause.Associations).Clauses(clause.Where{Exprs: []clause.Expression{where}}).Delete(so_master).Error; err != nil {
+			tx.Rollback()
+			return nil, err
+		}
+
+		soItems := soMaster.SoItems
+		for range soItems {
+			soItemID := NextID()
+			so_item := &SoItem{}
+			whereItem := clause.Eq{Column: "so_sysno", Value: soItemID}
+			if err := tx.Clauses(clause.Where{Exprs: []clause.Expression{whereItem}}).Delete(so_item).Error; err != nil {
+				tx.Rollback()
+				return nil, err
+			}
+		}
+		result = append(result, soid)
+	}
+	err := tx.Commit().Error
+	if err != nil {
+		return nil, err
+	}
+	return result, nil
+}
+
+//https://gorm.io/docs/delete.html#Batch-Delete
+func (dao *Dao) DeleteBatchSO(ctx context.Context, soMasters []*SoMaster) ([]uint64, error) {
+	result := make([]uint64, 0, len(soMasters))
+	tx := dao.DB.WithContext(ctx).Begin(&sql.TxOptions{
+		Isolation: sql.LevelDefault,
+		ReadOnly:  false,
+	})
+
+	if err := tx.Exec("DELETE FROM so_master\nWHERE sysno=3658595640;\nDELETE FROM so_master\nWHERE sysno=4121212486;\n").Error; err != nil {
+		tx.Rollback()
+		return nil, err
+	}
+	tx.Rollback()
+	//err := tx.Commit().Error
+	//if err != nil {
+	//	return nil, err
+	//}
+	return result, nil
+}
+
+// https://gorm.io/docs/update.html#Batch-Updates
+func (dao *Dao) UpdateBatchSO() {
+
+}
+
 func NextID() uint64 {
 	id, _ := uuid.NewUUID()
 	return uint64(id.ID())

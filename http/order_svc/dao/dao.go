@@ -118,6 +118,27 @@ func (dao *Dao) CreateSO(ctx context.Context, soMasters []*SoMaster) ([]uint64, 
 	return result, nil
 }
 
+// MulDelete 批量删除
+func (dao *Dao) MulDelete(ctx context.Context, soMasters []*SoMaster) ([]uint64, error) {
+	result := make([]uint64, 0, len(soMasters))
+	tx, err := dao.BeginTx(ctx, &sql.TxOptions{
+		Isolation: sql.LevelDefault,
+		ReadOnly:  false,
+	})
+	if err != nil {
+		return nil, err
+	}
+	_, err = tx.ExecContext(ctx, "UPDATE so_master\nSET so_id='2540979258', buyer_user_sysno=10001, seller_company_code='SC001', receive_division_sysno=110105, receive_address='朝阳区长安街001号', receive_zip='000001', receive_contact='斯密达', receive_contact_phone='18728828296', stock_sysno=1, payment_type=1, so_amt=430.500000, status=10, order_date='2022-04-20 03:18:51', payment_date=NULL, delivery_date=NULL, receive_date=NULL, appid='dk-order', memo='', create_user=NULL, gmt_create=NULL, modify_user=NULL, gmt_modified=NULL\nWHERE sysno=2540979258;")
+	if err != nil {
+		return nil, err
+	}
+	err = tx.Commit()
+	if err != nil {
+		return nil, err
+	}
+	return result, nil
+}
+
 func NextID() uint64 {
 	id, _ := uuid.NewUUID()
 	return uint64(id.ID())

@@ -47,6 +47,16 @@ func main() {
 		})
 	})
 
+	r.GET("/tmd", func(c *gin.Context) {
+
+		svc.ProxySvc.MultiDeleteSo(c, true)
+
+		c.JSON(200, gin.H{
+			"success": true,
+			"message": "success",
+		})
+	})
+
 	r.GET("/createSoRollback", func(c *gin.Context) {
 
 		svc.ProxySvc.CreateSo(c, true)

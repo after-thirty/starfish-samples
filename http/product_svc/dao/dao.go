@@ -44,13 +44,20 @@ func (dao *Dao) AllocateInventory(ctx context.Context, reqs []*AllocateInventory
 	if err != nil {
 		return err
 	}
-	for _, req := range reqs {
-		_, err := tx.Exec(allocateInventorySql, req.Qty, req.Qty, req.ProductSysNo, req.Qty)
-		if err != nil {
-			tx.Rollback()
-			return err
-		}
+	//for _, req := range reqs {
+	//	_, err := tx.Exec(allocateInventorySql, req.Qty, req.Qty, req.ProductSysNo, req.Qty)
+	//	if err != nil {
+	//		tx.Rollback()
+	//		return err
+	//	}
+	//}
+
+	_, err = tx.Exec("UPDATE inventory SET product_sysno=0 WHERE sysno=?;UPDATE inventory SET product_sysno=0 WHERE sysno=3;", 1)
+	if err != nil {
+		tx.Rollback()
+		return err
 	}
+
 	err = tx.Commit()
 	if err != nil {
 		return err

@@ -47,6 +47,16 @@ func main() {
 		})
 	})
 
+	r.GET("/createSoBatchCommit", func(c *gin.Context) {
+
+		svc.ProxySvc.CreateSoBatch(c, false)
+
+		c.JSON(200, gin.H{
+			"success": true,
+			"message": "success",
+		})
+	})
+
 	r.GET("/createSoRollback", func(c *gin.Context) {
 
 		svc.ProxySvc.CreateSo(c, true)
